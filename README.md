@@ -1,4 +1,4 @@
-## closet-switch-design-l3
+## closet-switch-design-l2
 
 ### Summary:
 
@@ -6,7 +6,7 @@ This is an Ansible demo to configure an L3 closet design
 
 ### Network Diagram:
 
-![Network Diagram](https://github.com/chronot1995/closet-switch-design-l3/blob/master/documentation/closet-switch-design-l3.png)
+![Network Diagram](https://github.com/chronot1995/closet-switch-design-l2/blob/master/documentation/closet-switch-design-l2.png)
 
 ### Initializing the demo environment:
 
@@ -22,11 +22,11 @@ First, make sure that the following is currently running on your machine:
 
 3. Copy the Git repo to your local machine:
 
-    ```git clone https://github.com/chronot1995/closet-switch-design-l3```
+    ```git clone https://github.com/chronot1995/closet-switch-design-l2```
 
 4. Change directories to the following
 
-    ```closet-switch-design-l3```
+    ```closet-switch-design-l2```
 
 6. Run the following:
 
@@ -41,11 +41,11 @@ First, make sure that the following is currently running on your machine:
 
 2. Copy the Git repo unto the oob-mgmt-server:
 
-    ```git clone https://github.com/chronot1995/closet-switch-design-l3```
+    ```git clone https://github.com/chronot1995/closet-switch-design-l2```
 
 3. Change directories to the following
 
-    ```closet-switch-design-l3/automation```
+    ```closet-switch-design-l2/automation```
 
 4. Run the following:
 
@@ -65,7 +65,7 @@ This will bring run the automation script and configure the two switches with BG
 
 3. The following command was used to run the Topology Converter within the vx-simulation directory:
 
-    ```python2 topology_converter.py closet-switch-design-l3.dot -c```
+    ```python2 topology_converter.py closet-switch-design-l2.dot -c```
 
     After the above command is executed, the following configuration changes are necessary:
 
