@@ -19,9 +19,6 @@ node:
         underlay:
           external:
             peers:
-              - swp1
-              - swp2
-              - swp3
               - swp20
           internal:
             peers:
@@ -35,9 +32,6 @@ node:
         underlay:
           external:
             peers:
-              - swp1
-              - swp2
-              - swp3
               - swp20
           internal:
             peers:
