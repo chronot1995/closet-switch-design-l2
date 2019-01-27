@@ -1,16 +1,4 @@
 node:
-  wan-rtr:
-    routing:
-      lo: 10.5.5.5/32
-      bgp:
-        asn: 65555
-        underlay:
-          external:
-            peers:
-              - swp1
-              - swp2
-          internal:
-            peers:
   agg-switch01:
     routing:
       lo: 10.4.4.1/32

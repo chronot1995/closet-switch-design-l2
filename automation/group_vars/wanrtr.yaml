@@ -11,29 +11,3 @@ node:
               - swp2
           internal:
             peers:
-  agg-switch01:
-    routing:
-      lo: 10.4.4.1/32
-      bgp:
-        asn: 65444
-        underlay:
-          external:
-            peers:
-              - swp20
-          internal:
-            peers:
-              - swp10
-              - swp11
-  agg-switch02:
-    routing:
-      lo: 10.4.4.2/32
-      bgp:
-        asn: 65444
-        underlay:
-          external:
-            peers:
-              - swp20
-          internal:
-            peers:
-              - swp10
-              - swp11
