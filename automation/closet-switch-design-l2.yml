@@ -11,3 +11,8 @@
   become: true
   roles:
   - closetswitches
+
+- hosts: wanrtr
+  become: true
+  roles:
+  - wanrtr
