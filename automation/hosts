@@ -6,6 +6,8 @@
 [aggswitches]
 agg-switch01 ansible_host=192.168.200.1
 agg-switch02 ansible_host=192.168.200.2
+
+[wanrtr]
 wan-rtr ansible_host=192.168.200.10
 
 [closetswitches]
