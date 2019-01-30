@@ -1,3 +1,5 @@
+### WORK IN PROGRESS / NOT FINISHED ###
+
 ## closet-switch-design-l2
 
 ### Summary:
