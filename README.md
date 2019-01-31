@@ -4,7 +4,7 @@
 
 ### Summary:
 
-This is an Ansible demo to configure an L3 closet design
+This is an Ansible demo to configure an L2 closet design
 
 ### Network Diagram:
 
