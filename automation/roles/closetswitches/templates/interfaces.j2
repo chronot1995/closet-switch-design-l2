@@ -40,7 +40,7 @@ iface {{interface}}
 {% endfor %}
 {% endif -%}
 
-{% if node[inventory_hostname].switching.interface is not none && if node[inventory_hostname].switching.bonds is not none %}
+{% if node[inventory_hostname].switching.interface is not none AND if node[inventory_hostname].switching.bonds is not none %}
 auto bridge
 iface bridge
     bridge-ports {{ node[inventory_hostname]["switching"]["interface"] | join(" ") }} {{ node[inventory_hostname]["switching"]["bonds"] | join(" ") }}
