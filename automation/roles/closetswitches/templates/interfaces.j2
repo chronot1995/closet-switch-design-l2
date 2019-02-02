@@ -18,9 +18,13 @@ iface mgmt
 auto {{interface}}
 iface {{interface}}
    bridge-access {{ node[inventory_hostname]["switching"]["interface"][interface].vlan }}
-{% endif -%}
+{% endif %}
+{% if node[inventory_hostname]["switching"]["interface"][interface].mode == 'bond' %}
+auto {{interface}}
+iface {{interface}}
+   post-up ip link set swp11 promisc on
+{% endif %}
 {% endfor %}
-{% endif -%}
 
 {% if node[inventory_hostname].switching.interface is not none %}
 auto bridge
