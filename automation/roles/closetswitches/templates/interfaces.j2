@@ -1,7 +1,4 @@
 # The loopback network interface
-auto lo
-iface lo inet loopback
-   address {{node[inventory_hostname]["routing"]["lo"]}}
 
 auto eth0
 iface eth0 inet dhcp
