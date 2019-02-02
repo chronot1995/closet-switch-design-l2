@@ -27,11 +27,27 @@ node:
     routing:
       svi:
         vlan5:
-          ip: 192.168.5.11/24
+          ip: 10.5.5.11/24
           vlan: 5
   closet-switch02:
     switching:
+      bonds:
+        bond01:
+          members:
+            - swp1
+            - swp2
+          mode: access
+          vlan: 5
+      bridge:
+        - bond01
+        - swp7
       interface:
+        swp1:
+          mode: bond
+          vlan: bond
+        swp2:
+          mode: bond
+          vlan: bond
         swp7:
           mode: access
           vlan: 100
@@ -45,7 +61,20 @@ node:
           vlan: 5
   closet-switch03:
     switching:
+      bonds:
+        bond01:
+          members:
+            - swp1
+            - swp2
+          mode: access
+          vlan: 5
       interface:
+        swp1:
+          mode: bond
+          vlan: bond
+        swp2:
+          mode: bond
+          vlan: bond
         swp7:
           mode: access
           vlan: 100
