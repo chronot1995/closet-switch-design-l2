@@ -1,10 +1,8 @@
-### WORK IN PROGRESS / NOT FINISHED ###
-
 ## closet-switch-design-l2
 
 ### Summary:
 
-This is an Ansible demo to configure an L2 closet design
+This is an Ansible demo to configure an L2 branch / closet design
 
 ### Network Diagram:
 
