@@ -14,8 +14,8 @@ iface mgmt
 
 {% if node[inventory_hostname].bonds is not none %}
 {% for member in node[inventory_hostname]["bonds"] %}
-auto {{member.members}}
-iface {{member.members}}
+auto {{member}}
+iface {{member}}
    post-up ip link set swp11 promisc on
 {% endfor %}
 {% endif -%}
