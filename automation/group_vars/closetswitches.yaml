@@ -5,16 +5,7 @@ node:
         bond01:
           members:
             - swp1
-          mode: access
-          vlan: 5
-        bond02:
-          members:
             - swp2
-          mode: access
-          vlan: 5
-        bond03:
-          members:
-            - swp3
           mode: access
           vlan: 5
       interface:
@@ -22,9 +13,6 @@ node:
           mode: bond
           vlan: bond
         swp2:
-          mode: bond
-          vlan: bond
-        swp3:
           mode: bond
           vlan: bond
         swp7:
