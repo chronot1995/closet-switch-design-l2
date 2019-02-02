@@ -22,7 +22,7 @@ iface {{interface}}
 {% if node[inventory_hostname]["switching"]["interface"][interface].mode == 'bond' %}
 auto {{interface}}
 iface {{interface}}
-   post-up ip link set swp11 promisc on
+   post-up ip link set {{interface}} promisc on
 {% endif %}
 {% endfor %}
 
