@@ -1,23 +1,26 @@
 node:
   closet-switch01:
+    bonds:
+      bond01:
+        members:
+          - swp1
+      bond02:
+        members:
+          - swp2
+      bond03:
+        members:
+          - swp3
     switching:
-      bonds:
+      interface:
         bond01:
-          members:
-            - swp1
           mode: access
           vlan: 5
         bond02:
-          members:
-            - swp2
           mode: access
           vlan: 5
         bond03:
-          members:
-            - swp3
           mode: access
           vlan: 5
-      interface:
         swp7:
           mode: access
           vlan: 100

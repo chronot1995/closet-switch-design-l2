@@ -12,6 +12,14 @@ iface mgmt
   address 127.0.0.1/8
   vrf-table auto
 
+{% if node[inventory_hostname].bonds is not none %}
+{% for members in node[inventory_hostname]["bonds"] %}
+auto {{member.members}}
+iface {{member.members}}
+   post-up ip link set swp11 promisc on
+{% endfor %}
+{% endif -%}
+
 {% if node[inventory_hostname].switching.interface is not none %}
 {% for interface in node[inventory_hostname]["switching"]["interface"] %}
 auto {{interface}}
