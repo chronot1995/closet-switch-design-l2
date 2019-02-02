@@ -13,18 +13,20 @@ iface mgmt
   vrf-table auto
 
 {% if node[inventory_hostname].bonds is not none %}
-{% for member in node[inventory_hostname]["bonds"] %}
-auto {{member}}
-iface {{member}}
-   post-up ip link set swp11 promisc on
+{% for bond in node[inventory_hostname]["bonds"] %}
+auto {{bond}}
+iface {{bond}}
+   bond-slaves {{ node[inventory_hostname]["bonds"][bond].members | join(" ") }}
 {% endfor %}
 {% endif -%}
 
 {% if node[inventory_hostname].switching.interface is not none %}
 {% for interface in node[inventory_hostname]["switching"]["interface"] %}
+{% if node[inventory_hostname]["switching"]["interface"][interface].mode is not "bond" %}
 auto {{interface}}
 iface {{interface}}
    bridge-access {{ node[inventory_hostname]["switching"]["interface"][interface].vlan }}
+{% endif -%}
 {% endfor %}
 {% endif -%}
 
