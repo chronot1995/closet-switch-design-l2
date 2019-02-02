@@ -12,16 +12,6 @@ iface mgmt
   address 127.0.0.1/8
   vrf-table auto
 
-{% if node[inventory_hostname].switching.bonds is not none %}
-{% for bond in node[inventory_hostname]["switching"]["bonds"] %}
-auto {{bond}}
-iface {{bond}}
-   bridge-access {{ node[inventory_hostname]["switching"]["bonds"][bond].vlan }}
-   bridge-vids {{ node[inventory_hostname]["switching"]["bonds"][bond].members | join(" ") }}
-   bridge-vlan-aware yes
-{% endfor %}
-{% endif -%}
-
 {% if node[inventory_hostname].switching.interface is not none %}
 {% for interface in node[inventory_hostname]["switching"]["interface"] %}
 auto {{interface}}
