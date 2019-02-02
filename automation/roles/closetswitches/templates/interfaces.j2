@@ -22,12 +22,14 @@ iface {{interface}}
 {% endfor %}
 {% endif -%}
 
-{% if node[inventory_hostname].switching.interface is not none %}
-auto bridge
-iface bridge
-    bridge-ports {{ node[inventory_hostname]["switching"]["interface"] | join(" ") }}
-    bridge-vids {{ node[inventory_hostname]["switching"]["vlans"] | join(" ") }}
-    bridge-vlan-aware yes
+{% if node[inventory_hostname].switching.bonds is not none %}
+{% for bond in node[inventory_hostname]["switching"]["bonds"] %}
+auto {{bond}}
+iface {{bond}}
+   bridge-access {{ node[inventory_hostname]["switching"]["bonds"][bond].vlan }}
+   bridge-vids {{ node[inventory_hostname]["switching"]["bonds"][bond].members | join(" ") }}
+   bridge-vlan-aware yes
+{% endfor %}
 {% endif -%}
 
 {% if node[inventory_hostname].switching.interface is not none %}
@@ -36,6 +38,14 @@ auto {{interface}}
 iface {{interface}}
    bridge-access {{ node[inventory_hostname]["switching"]["interface"][interface].vlan }}
 {% endfor %}
+{% endif -%}
+
+{% if node[inventory_hostname].switching.interface is not none && if node[inventory_hostname].switching.bonds is not none %}
+auto bridge
+iface bridge
+    bridge-ports {{ node[inventory_hostname]["switching"]["interface"] | join(" ") }} {{ node[inventory_hostname]["switching"]["bonds"] | join(" ") }}
+    bridge-vids {{ node[inventory_hostname]["switching"]["vlans"] | join(" ") }}
+    bridge-vlan-aware yes
 {% endif -%}
 
 {% for vlanint in node[inventory_hostname]["routing"]["svi"] -%}
