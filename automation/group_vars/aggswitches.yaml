@@ -60,6 +60,13 @@ node:
           internal:
             peers:
               - peerlink
+      svi:
+        vlan5:
+          ip: 10.5.5.2/24
+          vlan: 5
+          vrrp:
+            mac: "44:38:39:FF:00:01"
+            ip: 10.5.5.1/24
   agg-switch02:
     mlag:
       address: 169.254.1.2/30
@@ -121,3 +128,10 @@ node:
           internal:
             peers:
               - peerlink
+      svi:
+        vlan5:
+          ip: 10.5.5.3/24
+          vlan: 5
+          vrrp:
+            mac: "44:38:39:FF:00:01"
+            ip: 10.5.5.1/24

@@ -64,3 +64,12 @@ iface bridge
     bridge-vids {{ node[inventory_hostname]["switching"]["vlans"] | join(" ") }}
     bridge-vlan-aware yes
 {% endif -%}
+
+{% for vlanint in node[inventory_hostname]["routing"]["svi"] -%}
+auto {{vlanint}}
+iface {{vlanint}}
+    address {{ node[inventory_hostname]["routing"]["svi"][vlanint]["ip"] }}
+    address-virtual {{ node[inventory_hostname]["routing"]["svi"][vlanint]["vrrp"]["mac"] }} {{ node[inventory_hostname]["routing"]["svi"][vlanint]["vrrp"]["ip"] }}
+    vlan-id {{ node[inventory_hostname]["routing"]["svi"][vlanint]["vlan"] }}
+    vlan-raw-device bridge
+{% endfor %}
