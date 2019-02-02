@@ -27,6 +27,15 @@ iface {{interface}}
 {% endfor %}
 {% endif %}
 
+{% if node[inventory_hostname]["switching"].bonds is not none %}
+{% for bond in node[inventory_hostname]["switching"]["bonds"] %}
+auto {{bond}}
+iface {{bond}}
+   bond-slaves {{ node[inventory_hostname]["switching"]["bonds"][bond].members | join(" ") }}
+   bridge-access {{ node[inventory_hostname]["switching"]["bonds"][bond].vlan }}
+{% endfor %}
+{% endif -%}
+
 {% if node[inventory_hostname].switching.interface is not none %}
 auto bridge
 iface bridge
