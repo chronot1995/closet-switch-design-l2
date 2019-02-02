@@ -68,6 +68,9 @@ node:
             - swp2
           mode: access
           vlan: 5
+      bridge:
+        - bond01
+        - swp7
       interface:
         swp1:
           mode: bond
