@@ -22,13 +22,6 @@ iface {{interface}}
 {% endfor %}
 {% endif -%}
 
-{% if node[inventory_hostname].routing.bgp.underlay.internal.peers is not none %}
-{% for interface in node[inventory_hostname]["routing"]["bgp"]["underlay"]["internal"]["peers"] %}
-auto {{interface}}
-iface {{interface}}
-{% endfor %}
-{% endif -%}
-
 {% if node[inventory_hostname].switching.interface is not none %}
 {% for interface in node[inventory_hostname]["switching"]["interface"] %}
 {% if node[inventory_hostname]["switching"]["interface"][interface].mode != 'bond' %}

@@ -59,8 +59,7 @@ node:
               - swp20
           internal:
             peers:
-              - swp10
-              - swp11
+              - peerlink
   agg-switch02:
     mlag:
       address: 169.254.1.2/30
@@ -121,5 +120,4 @@ node:
               - swp20
           internal:
             peers:
-              - swp10
-              - swp11
+              - peerlink
