@@ -37,13 +37,13 @@ iface {{bond}}
 {% endif -%}
 
 {% if node[inventory_hostname].switching.interface is not none %}
+{% if node[inventory_hostname]["switching"]["interface"][interface].mode != 'bond' %}
 auto bridge
 iface bridge
-    {% if node[inventory_hostname]["switching"]["interface"][interface].mode != 'bond' %}
     bridge-ports {{ node[inventory_hostname]["switching"]["interface"] | join(" ") }}
-    {% endif -%}
     bridge-vids {{ node[inventory_hostname]["switching"]["vlans"] | join(" ") }}
     bridge-vlan-aware yes
+{% endif -%}
 {% endif -%}
 
 {% for vlanint in node[inventory_hostname]["routing"]["svi"] -%}
