@@ -13,7 +13,7 @@ iface mgmt
   vrf-table auto
 
 {% if node[inventory_hostname].bonds is not none %}
-{% for members in node[inventory_hostname]["bonds"] %}
+{% for member in node[inventory_hostname]["bonds"] %}
 auto {{member.members}}
 iface {{member.members}}
    post-up ip link set swp11 promisc on
