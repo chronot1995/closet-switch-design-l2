@@ -25,6 +25,7 @@ iface {{interface}}
    post-up ip link set {{interface}} promisc on
 {% endif %}
 {% endfor %}
+{% endif %}
 
 {% if node[inventory_hostname].switching.interface is not none %}
 auto bridge
