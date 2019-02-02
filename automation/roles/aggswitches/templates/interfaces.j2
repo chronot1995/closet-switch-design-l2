@@ -28,3 +28,38 @@ auto {{interface}}
 iface {{interface}}
 {% endfor -%}
 {% endif -%}
+
+{% if node[inventory_hostname].switching.interface is not none %}
+{% for interface in node[inventory_hostname]["switching"]["interface"] %}
+{% if node[inventory_hostname]["switching"]["interface"][interface].mode != 'bond' %}
+auto {{interface}}
+iface {{interface}}
+   bridge-access {{ node[inventory_hostname]["switching"]["interface"][interface].vlan }}
+{% endif %}
+{% if node[inventory_hostname]["switching"]["interface"][interface].mode == 'bond' %}
+auto {{interface}}
+iface {{interface}}
+   post-up ip link set {{interface}} promisc on
+{% endif %}
+{% endfor %}
+{% endif %}
+
+auto peerlink
+iface peerlink
+   bond-slaves {{ node[inventory_hostname].mlag.members | join(" ") }}
+
+auto peerlink.4094
+iface peerlink.4094
+   address {{ node[inventory_hostname]["mlag"]["address"] }}
+   clagd-backup-ip {{ node[inventory_hostname]["mlag"]["backupip"] }} vrf mgmt
+   clagd-peer-ip {{ node[inventory_hostname]["mlag"]["peerip"] }}
+   clagd-priority {{ node[inventory_hostname]["mlag"]["priority"] }}
+   clagd-sys-mac {{ node[inventory_hostname]["mlag"]["sysmac"] }}
+
+{% for interface in node[inventory_hostname]["mlag"]["interfaces"] -%}
+auto {{interface}}
+iface {{interface}}
+   bond-slaves {{ node[inventory_hostname]["mlag"]["interfaces"][interface].members }}
+   bridge-access {{ node[inventory_hostname]["mlag"]["interfaces"][interface].vlans }}
+   clag-id {{ node[inventory_hostname]["mlag"]["interfaces"][interface].clagid }}
+{% endfor %}
