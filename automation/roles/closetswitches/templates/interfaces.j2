@@ -22,7 +22,7 @@ iface {{bond}}
 
 {% if node[inventory_hostname].switching.interface is not none %}
 {% for interface in node[inventory_hostname]["switching"]["interface"] %}
-{% if node[inventory_hostname]["switching"]["interface"][interface].mode is not "bond" %}
+{% if node[inventory_hostname]["switching"]["interface"][interface].mode != "bond" %}
 auto {{interface}}
 iface {{interface}}
    bridge-access {{ node[inventory_hostname]["switching"]["interface"][interface].vlan }}
