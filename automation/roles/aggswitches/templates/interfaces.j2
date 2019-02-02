@@ -56,7 +56,7 @@ iface peerlink.4094
    clagd-priority {{ node[inventory_hostname]["mlag"]["priority"] }}
    clagd-sys-mac {{ node[inventory_hostname]["mlag"]["sysmac"] }}
 
-{% for interface in node[inventory_hostname]["mlag"]["interfaces"] -%}
+{% for interface in node[inventory_hostname]["mlag"]["interfaces"] %}
 auto {{interface}}
 iface {{interface}}
    bond-slaves {{ node[inventory_hostname]["mlag"]["interfaces"][interface].members | join(" ") }}

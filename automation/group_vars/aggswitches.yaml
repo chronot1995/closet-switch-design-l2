@@ -12,19 +12,22 @@ node:
       interfaces:
         bond01:
           clagid: 1
-          members: swp1
+          members:
+            - swp1
           mode: access
           vlans:
             - 5
         bond02:
           clagid: 2
-          members: swp2
+          members:
+            - swp2
           mode: access
           vlans:
             - 5
         bond03:
           clagid: 3
-          members: swp3
+          members:
+            - swp3
           mode: access
           vlans:
             - 5
