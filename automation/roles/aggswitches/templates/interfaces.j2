@@ -45,7 +45,7 @@ auto peerlink.4094
 iface peerlink.4094
    address {{ node[inventory_hostname]["mlag"]["address"] }}
    clagd-backup-ip {{ node[inventory_hostname]["mlag"]["backupip"] }} vrf mgmt
-   clagd-peer-ip {{ node[inventory_hostname]["mlag"]["peerip"] }}
+   clagd-peer-ip linklocal
    clagd-priority {{ node[inventory_hostname]["mlag"]["priority"] }}
    clagd-sys-mac {{ node[inventory_hostname]["mlag"]["sysmac"] }}
 
