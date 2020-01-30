@@ -53,7 +53,7 @@ iface peerlink.4094
 auto {{interface}}
 iface {{interface}}
    bond-slaves {{ node[inventory_hostname]["mlag"]["interfaces"][interface].members | join(" ") }}
-   bridge-access {{ node[inventory_hostname]["mlag"]["interfaces"][interface].vlans | join(" ") }}
+   bridge-vids {{ node[inventory_hostname]["mlag"]["interfaces"][interface].vlans | join(" ") }}
    clag-id {{ node[inventory_hostname]["mlag"]["interfaces"][interface].clagid }}
 {% endfor %}
 
