@@ -60,7 +60,7 @@ node:
               - swp20
           internal:
             peers:
-              - peerlink
+              - peerlink.4094
       svi:
         vlan5:
           ip: 10.5.5.2/24
@@ -129,7 +129,7 @@ node:
               - swp20
           internal:
             peers:
-              - peerlink
+              - peerlink.4094
       svi:
         vlan5:
           ip: 10.5.5.3/24
